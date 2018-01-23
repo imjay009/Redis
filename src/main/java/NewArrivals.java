@@ -4,12 +4,13 @@ public class NewArrivals {
 
     void product() {
         Jedis jedis = new Jedis();
-        Long cnt = jedis.dbSize();
+        Long count = jedis.dbSize();
         Integer i = 0;
-        while( i < 10 ){
-            System.out.println(jedis.hget(cnt.toString(),"productName:"));
+        while( i < 10 ) {
+            System.out.println(jedis.hget("ID_" + count.toString(),"productName"));
             i++;
-            cnt--;
+            count--;
         }
+        System.out.println(" ");
     }
 }
