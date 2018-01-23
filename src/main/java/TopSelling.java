@@ -11,11 +11,11 @@ public class TopSelling {
             Map<String,String> map = jedis.hgetAll("ID_" + i.toString());
             String ordered = map.get("ordered");
             Integer score = Integer.parseInt(ordered);
-            jedis.zadd("ranking", score, "ID_" + i.toString());
+            jedis.zadd("ranking", score, "ID_" + i.toString()); // add in sorted set.
             i++;
             count--;
         }
-        for(i = 0; i < 10; i++){
+        for(i = 0; i < 5; i++){
             String player = jedis.zrevrange("ranking", i, i+1).iterator().next();
             System.out.println(jedis.hget(player,"productName"));
         }

@@ -16,7 +16,7 @@ public class UnderPerforming {
             i++;
             count--;
         }
-        for(i = 0; i < 10; i++){
+        for(i = 0; i < 5; i++){
             String player = jedis.zrange("ranking", i, i+1).iterator().next();
             System.out.println(jedis.hget(player,"productName"));
         }
